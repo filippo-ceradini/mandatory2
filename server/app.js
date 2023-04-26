@@ -19,9 +19,6 @@ app.use(session({
     cookie: { secure: false } //'secure : true' expect us to use https
 }));
 
-
-
-
 import cors from "cors";
 app.use(cors({
     credentials: true,
@@ -57,4 +54,4 @@ app.use(signup)
 
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log("The server is running on port "), PORT);
+app.listen(PORT, () => console.log(`The server is running on port ${PORT}`));
