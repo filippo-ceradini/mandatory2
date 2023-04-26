@@ -1,9 +1,6 @@
 import express from "express";
 import session from "express-session";
-import sendEmail from './utils/mailSender.js';
 import dotenv from "dotenv";
-import path from 'path';
-import { log } from "console";
 import crypto from 'crypto';
 
 
@@ -25,13 +22,6 @@ app.use(cors({
     origin: true
 }));
 
-export default function isAuthenticated(req, res, next) {
-    if (req.session.user.email) {
-        next();
-    } else {
-        res.redirect('/login');
-    }
-};
 
 //Implementing Rate Limiter
 import rateLimit from "express-rate-limit"

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import bcrypt from "bcrypt";
-import isAuthenticated from '../app.js';
+import isAuthenticated from '../utils/autentication.js';
 import db from "../databases/connection.js";
 
 const router = Router();
