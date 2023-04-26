@@ -3,13 +3,17 @@ Mandatory 2 Assignment
 Server:
 
 cd serve/
+
 npm i
+
 nodemon app.js
 
 Client:
 
 cd client/
+
 npm i
+
 npm run serve
 
 
