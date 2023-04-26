@@ -1,22 +1,18 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="card bg-dark text-white">
-          <div class="card-header">
-            <h1 class="card-title">Welcome  {{ currentUser.email }}!</h1>
+  <div className="container">
+    <div className="row justify-content-center">
+      <div className="col-md-6">
+        <div className="card bg-dark text-white">
+          <div className="card-header">
+            <h1 className="card-title">Welcome {{ currentUser.email }}!</h1>
           </div>
-          <div class="card-body">
-            <div class="embed-responsive embed-responsive-16by9 mb-4">
-              <video class="embed-responsive-item" controls autoplay>
+          <div className="card-body">
+            <div className="embed-responsive embed-responsive-16by9 mb-4">
+              <video className="embed-responsive-item" controls autoPlay>
                 <source src="https://bit.ly/3BlS71b" type="video/mp4">
               </video>
             </div>
-            <form @submit.prevent="logout()">
-              <div class="form-group">
-                <button type="submit" class="btn btn-outline-success btn-block">Log Out</button>
-              </div>
-            </form>
+            <LogoutButton @logout-completed="handleLogout"/>
           </div>
         </div>
       </div>
@@ -25,12 +21,16 @@
 </template>
 
 <script>
-import toastr from 'toastr'
+import LogoutButton from '@/components/LogoutButton.vue';
+
 export default {
+  components: {
+    LogoutButton,
+  },
   data() {
     return {
       currentUser: null,
-    }
+    };
   },
   created() {
     const user = localStorage.getItem('user');
@@ -39,14 +39,12 @@ export default {
     }
   },
   methods: {
-    logout() {
-      toastr.success(`Bye Bye, ${this.currentUser.email}`);
+    handleLogout() {
       this.currentUser = null;
-      localStorage.removeItem('user');
       this.$router.push('/login');
     },
   },
-}
+};
 </script>
 
 <style>
@@ -54,5 +52,4 @@ export default {
   max-width: 500px;
   margin-top: 50px;
 }
-
 </style>

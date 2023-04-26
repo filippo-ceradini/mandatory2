@@ -30,17 +30,21 @@ Requirements:
 Backend:
 
 ✔ You need to implement authentication:
-- using 
+- using Bcrypt to encript the password when a new user is created
 
-✔ You need to implement authorization.
+✔ You need to implement authorization:
 
-✔ Use sessions:
+- Used sessions.
 
 Frontend:
 
 ✔ You need to implement authentication too:
 
+-Login and signup
+
 ✔ You need to implement authorization here too:
+
+- Done with Router in index.js
 
 ✔ Bonus
 

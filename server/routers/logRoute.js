@@ -1,11 +1,11 @@
 import { Router } from "express";
 import bcrypt from "bcrypt";
-import isAuthenticated from '../utils/autentication.js';
+import hasAuthentication from '../utils/autentication.js';
 import db from "../databases/connection.js";
 
 const router = Router();
 
-router.get("/", isAuthenticated, (req, res, next) => {
+router.get("/", hasAuthentication, (req, res, next) => {
     res.send({ message: `Hi ${req.session.user.email}, Welcome to the home page` });
 })
 
@@ -44,7 +44,7 @@ router.post("/login", async (req, res, next) => {
     }
 })
 
-router.get("/user", isAuthenticated, (req, res) => {
+router.get("/user", hasAuthentication, (req, res) => {
     const { email } = req.session.user;
     res.json({ email });
 });
