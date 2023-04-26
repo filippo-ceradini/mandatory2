@@ -6,7 +6,7 @@ import db from "../databases/connection.js";
 const router = Router();
 
 router.get("/", isAuthenticated, (req, res, next) => {
-    res.send({ message: `Hi ${req.session.user.username}, Welcome to the home page` });
+    res.send({ message: `Hi ${req.session.user.email}, Welcome to the home page` });
 })
 
 router.post("/login", async (req, res, next) => {
@@ -33,8 +33,9 @@ router.post("/login", async (req, res, next) => {
                 id: userFound.id,
                 email: userFound.email
             };
+            console.log(req.session.user.email)
+            return res.status(200).json({ message: "Logged in " + userFound.email});
 
-            return res.status(200).json({ message: "Logged in" + userFound.email});
         } else {
             return res.status(400).json({ message: "Wrong password. Try again" });
         }
@@ -59,5 +60,10 @@ router.post('/logout', (req, res) => {
         }
     });
 });
+
+router.get('/test-session', (req, res) => {
+    res.json({ session: req.session });
+});
+
 
 export default router;

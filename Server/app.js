@@ -19,6 +19,9 @@ app.use(session({
     cookie: { secure: false } //'secure : true' expect us to use https
 }));
 
+
+
+
 import cors from "cors";
 app.use(cors({
     credentials: true,
@@ -26,12 +29,12 @@ app.use(cors({
 }));
 
 export default function isAuthenticated(req, res, next) {
-    if (req.session && req.session.user) {
+    if (req.session.user.email) {
         next();
     } else {
         res.redirect('/login');
     }
-}
+};
 
 //Implementing Rate Limiter
 import rateLimit from "express-rate-limit"
@@ -47,6 +50,7 @@ app.use(mailRouter)
 
 import userLogin from './routers/logRoute.js'
 app.use(userLogin)
+
 
 import signup from './routers/signupRoute.js'
 app.use(signup)
