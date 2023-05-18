@@ -2,6 +2,9 @@
   "name": "Server",
   "type": "module",
   "version": "1.0.0",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
