@@ -63,7 +63,7 @@ export default {
           toastr.error('Please enter a valid email address!');
           return;
         }
-        const response = await fetch('http://localhost:8080/login', {
+        const response = await fetch('https://lemon-hare-wig.cyclic.sh/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

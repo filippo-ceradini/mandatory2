@@ -19,7 +19,7 @@ app.use(session({
 import cors from "cors";
 app.use(cors({
     credentials: true,
-    origin: true
+    origin: 'http://localhost:8080'
 }));
 
 
